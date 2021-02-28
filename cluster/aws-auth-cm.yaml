@@ -1,0 +1,32 @@
+#
+#
+# NOTE the EKS documentation for the EXAMPLE CONFIGMAP is WRONG (formating)
+#
+#
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: aws-auth
+  namespace: kube-system
+data:
+  mapUsers: |
+    - groups:
+      - system:masters
+      userarn: arn:aws:iam::308364868471:user/rernst
+      username: rernst
+  mapRoles: |
+    - groups:
+      - system:bootstrappers
+      - system:nodes
+      rolearn: arn:aws:iam::308364868471:role/eksctl-ab3-eks-nodegroup-managed-NodeInstanceRole-QK7VH8E0Z3QH
+      username: system:node:{{EC2PrivateDNSName}}
+    - groups:
+      - system:bootstrappers
+      - system:nodes
+      rolearn: arn:aws:iam::308364868471:role/eksctl-ab3-eks-nodegroup-managed-NodeInstanceRole-BWBLN5KZAXD5
+      username: system:node:{{EC2PrivateDNSName}}
+    - groups:
+      - system:bootstrappers
+      - system:nodes
+      rolearn: arn:aws:iam::308364868471:role/eksctl-ab3-eks-cluster-ServiceRole-BAAU5VTT2XS4
+      username: system:node:{{EC2PrivateDNSName}}

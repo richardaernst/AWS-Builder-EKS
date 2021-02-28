@@ -1,0 +1,23 @@
+#eksctl create fargateprofile -f fp-dev.yaml
+#
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: ab3-eks
+  region: us-east-2
+
+fargateProfiles:
+  - name: fp-dev
+    selectors:
+      # All workloads in the "deployment-fargate" Kubernetes namespace will be
+      # scheduled onto Fargate:
+      - namespace: fp-dev
+  - name: fp-dev
+    selectors:
+      # All workloads in the "dev" Kubernetes namespace matching the following
+      # label selectors will be scheduled onto Fargate:
+      - namespace: fp-dev
+        labels:
+          env: dev
+          checks: passed

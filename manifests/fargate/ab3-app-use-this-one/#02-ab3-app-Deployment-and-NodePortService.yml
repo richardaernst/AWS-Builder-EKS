@@ -1,0 +1,48 @@
+#02-ab3-app-Deployment-and-NodePortService.yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ab3-app-deployment
+  labels:
+    app: ab3-app
+  namespace: development 
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ab3-app
+  template:
+    metadata:
+      labels:
+        app: ab3-app
+    spec:
+      containers:
+        - name: ab3-app
+          image: 308364868471.dkr.ecr.us-east-2.amazonaws.com/ab3-app:2.0
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "500m"
+            limits:
+              memory: "500Mi"
+              cpu: "1000m"                         
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ab3-app-nodeport-service
+  labels:
+    app: ab3-app
+  namespace: development
+  annotations:
+#Important Note:  Need to add health check path annotations in service level if we are planning to use multiple targets in a load balancer    
+    alb.ingress.kubernetes.io/healthcheck-path: /app1/index.html
+spec:
+  type: NodePort
+  selector:
+    app: ab3-app
+  ports:
+    - port: 80
+      targetPort: 80

@@ -1,0 +1,23 @@
+# eksctl create nodegroup -f eks-nodegroup-managed-ng-private.yaml
+# eksctl delete nodegroup --approve -f eks-nodegroup-managed-ng-private.yaml
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: ab3-eks
+  region: us-east-2
+
+managedNodeGroups:
+  - name: managed-ng-private-worker
+    instanceType: t3.medium
+    # launch nodegroup in private subnets
+    privateNetworking: true
+    minSize: 3
+    desiredCapacity: 3
+    maxSize: 6
+    availabilityZones: ["us-east-2a", "us-east-2b", "us-east-2c"]
+    volumeSize: 20
+
+    labels: {role: worker}
+    tags:
+      nodegroup-role: worker

@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: php-apache-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: php
+  template:
+    metadata:
+      labels:
+        app: php
+    spec:
+      containers:
+        - name: php
+          image: 308364868471.dkr.ecr.us-east-2.amazonaws.com/php-apache
+          ports:
+            - name: http
+              containerPort: 80

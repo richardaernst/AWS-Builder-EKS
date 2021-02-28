@@ -1,0 +1,92 @@
+{
+    "apiVersion": "v1",
+    "kind": "Namespace",
+    "metadata": {
+        "annotations": {
+            "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Namespace\",\"metadata\":{\"annotations\":{},\"name\":\"deployment-red\"}}\n"
+        },
+        "creationTimestamp": "2021-02-23T06:59:47Z",
+        "deletionTimestamp": "2021-02-23T07:14:03Z",
+        "managedFields": [
+            {
+                "apiVersion": "v1",
+                "fieldsType": "FieldsV1",
+                "fieldsV1": {
+                    "f:metadata": {
+                        "f:annotations": {
+                            ".": {},
+                            "f:kubectl.kubernetes.io/last-applied-configuration": {}
+                        }
+                    },
+                    "f:status": {
+                        "f:phase": {}
+                    }
+                },
+                "manager": "kubectl-client-side-apply",
+                "operation": "Update",
+                "time": "2021-02-23T06:59:47Z"
+            },
+            {
+                "apiVersion": "v1",
+                "fieldsType": "FieldsV1",
+                "fieldsV1": {
+                    "f:status": {
+                        "f:conditions": {
+                            ".": {},
+                            "k:{\"type\":\"NamespaceContentRemaining\"}": {
+                                ".": {},
+                                "f:lastTransitionTime": {},
+                                "f:message": {},
+                                "f:reason": {},
+                                "f:status": {},
+                                "f:type": {}
+                            },
+                            "k:{\"type\":\"NamespaceDeletionContentFailure\"}": {
+                                ".": {},
+                                "f:lastTransitionTime": {},
+                                "f:message": {},
+                                "f:reason": {},
+                                "f:status": {},
+                                "f:type": {}
+                            },
+                            "k:{\"type\":\"NamespaceDeletionDiscoveryFailure\"}": {
+                                ".": {},
+                                "f:lastTransitionTime": {},
+                                "f:message": {},
+                                "f:reason": {},
+                                "f:status": {},
+                                "f:type": {}
+                            },
+                            "k:{\"type\":\"NamespaceDeletionGroupVersionParsingFailure\"}": {
+                                ".": {},
+                                "f:lastTransitionTime": {},
+                                "f:message": {},
+                                "f:reason": {},
+                                "f:status": {},
+                                "f:type": {}
+                            },
+                            "k:{\"type\":\"NamespaceFinalizersRemaining\"}": {
+                                ".": {},
+                                "f:lastTransitionTime": {},
+                                "f:message": {},
+                                "f:reason": {},
+                                "f:status": {},
+                                "f:type": {}
+                            }
+                        }
+                    }
+                },
+                "manager": "kube-controller-manager",
+                "operation": "Update",
+                "time": "2021-02-23T07:14:30Z"
+            }
+        ],
+        "name": "deployment-red",
+        "resourceVersion": "28276",
+        "selfLink": "/api/v1/namespaces/deployment-red",
+        "uid": "39743abe-5330-47e0-abb1-b82df7fd3360"
+    },
+    "spec": {
+        "finalizers": [        ]
+    }
+}
