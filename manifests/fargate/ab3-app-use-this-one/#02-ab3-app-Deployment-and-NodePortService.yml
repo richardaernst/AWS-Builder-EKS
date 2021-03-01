@@ -32,15 +32,15 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: ab3-app-nodeport-service
+  name: ab3-app-service
   labels:
     app: ab3-app
   namespace: development
   annotations:
 #Important Note:  Need to add health check path annotations in service level if we are planning to use multiple targets in a load balancer    
-    alb.ingress.kubernetes.io/healthcheck-path: /app1/index.html
+    alb.ingress.kubernetes.io/healthcheck-path: 
 spec:
-  type: NodePort
+  type: 
   selector:
     app: ab3-app
   ports:

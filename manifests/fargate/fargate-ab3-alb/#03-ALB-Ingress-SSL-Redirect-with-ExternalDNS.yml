@@ -3,9 +3,9 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: ingress-usermgmt-restapp-1-service
+  name: ingress-ab3-app-ingress-service
   labels:
-    app: usermgmt-restapp-1
+    app: ab3-app
   namespace: fp-dev     
   annotations:
     # Ingress Core Settings  
@@ -31,16 +31,16 @@ metadata:
     #external-dns.alpha.kubernetes.io/hostname: fpdev.kubeoncloud.com      
     # For Fargate
     alb.ingress.kubernetes.io/target-type: ip    
-spec:
-  rules:
-    - http:
-        paths:
-          #- path: /* # SSL Redirect Setting
-           # backend:
-            # serviceName: ssl-redirect
-             # servicePort: use-annotation            
-          - path: /*
-            backend:
-              serviceName: ab3-app-nodeport-service
-              servicePort: 80
-            # Important Note-1: In path based routing order is very important, if we are going to use  "/*", try to use it at the end of all rules.         
+      spec:
+        rules:
+          - http:
+              paths:
+                #- path: /* # SSL Redirect Setting
+                 # backend:
+                  # serviceName: ssl-redirect
+                   # servicePort: use-annotation            
+                - path: /*
+                  backend:
+                    serviceName: ab3-app-service
+                    servicePort: 80
+                  # Important Note-1: In path based routing order is very important, if we are going to use  "/*", try to use it at the end of all rules.         

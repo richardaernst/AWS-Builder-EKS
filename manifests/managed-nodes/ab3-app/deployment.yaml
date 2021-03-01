@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ab3-app-frontend
+  labels:
+    app: ab3-app-frontend
+  namespace: development
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+     app: ab3-app-frontend
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: ab3-app-frontend
+    spec:
+      containers:
+      - image: 308364868471.dkr.ecr.us-east-2.amazonaws.com/ab3-app:2.0
+        imagePullPolicy: Always
+        name: ab3-app-frontend
+        ports:
+        - containerPort: 80
+          protocol: TCP
