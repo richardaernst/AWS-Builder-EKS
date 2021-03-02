@@ -31,16 +31,16 @@ metadata:
     #external-dns.alpha.kubernetes.io/hostname: fpdev.kubeoncloud.com      
     # For Fargate
     alb.ingress.kubernetes.io/target-type: ip    
-        spec:
-          rules:
-            - http:
-                paths:
-                  #- path: /* # SSL Redirect Setting
-                   # backend:
-                    # serviceName: ssl-redirect
-                     # servicePort: use-annotation            
-                  - path: /*
-                    backend:
-                      serviceName: app1-nginx-nodeport-service
-                      servicePort: 80                                   
-        # Important Note-1: In path based routing order is very important, if we are going to use  "/*", try to use it at the end of all rules.         
+spec:
+  rules:
+    - http:
+        paths:
+          #- path: /* # SSL Redirect Setting
+            # backend:
+            # serviceName: ssl-redirect
+              # servicePort: use-annotation            
+          - path: /*
+            backend:
+              serviceName: app1-nginx-nodeport-service
+              servicePort: 80                                   
+# Important Note-1: In path based routing order is very important, if we are going to use  "/*", try to use it at the end of all rules.         

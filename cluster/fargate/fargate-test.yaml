@@ -1,0 +1,15 @@
+#eksctl create fargateprofile -f fargate-test.yaml
+#
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: ab3-eks
+  region: us-east-2
+
+fargateProfiles:
+  - name: fargate-test
+    selectors:
+      # All workloads in the "test" Kubernetes namespace matching the following
+      # label selectors will be scheduled onto Fargate:
+      - namespace: test
