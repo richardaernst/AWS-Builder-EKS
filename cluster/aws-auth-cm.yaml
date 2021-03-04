@@ -14,6 +14,14 @@ data:
       - system:masters
       userarn: arn:aws:iam::308364868471:user/rernst
       username: rernst
+        - groups:
+      - system:masters
+      userarn: arn:aws:iam::308364868471:user/rernst
+      username: rernst 
+    - groups:
+      - system:masters
+      userarn: arn:aws:sts::308364868471:assumed-role/ab3workshop-admin
+      username: ab3workshop-admin 
   mapRoles: |
     - groups:
       - system:bootstrappers
@@ -30,3 +38,9 @@ data:
       - system:nodes
       rolearn: arn:aws:iam::308364868471:role/eksctl-ab3-eks-cluster-ServiceRole-BAAU5VTT2XS4
       username: system:node:{{EC2PrivateDNSName}}
+    - groups:
+      - system:bootstrappers
+      - system:nodes
+      - system:node-proxier
+      rolearn: arn:aws:iam::308364868471:role/eksctl-ab3-eks-cluster-FargatePodExecutionRole-CE0TYV23IJ55
+      username: system:node:{{SessionName}}
